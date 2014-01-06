@@ -25,7 +25,7 @@ angular.module('angularCmsApp', [
 	#'$strap.directives'
 	#'cms.Templates'
 ])
-	.config ($routeProvider) ->
+	.config ($routeProvider, $locationProvider) ->
 		
 		routeResolver = 
 			# I will cause a 1 second delay
@@ -34,6 +34,9 @@ angular.module('angularCmsApp', [
 				$timeout delay.resolve, 1000
 				delay.promise
 			
+		#Configure location
+		$locationProvider.html5Mode(false)
+
 		#Router Config
 		$routeProvider
 			.when '/',
